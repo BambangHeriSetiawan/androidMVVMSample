@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <import type="com.google.android.material.textfield.TextInputEditText"/>
+        <variable
+            name="dialogAddVm"
+            type="com.simx.mvvmdatabindingsample.main.dialog.DialogAddViewModel"/>
+    </data>
+    <RelativeLayout
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.core.widget.NestedScrollView
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_margin="5dp"
+                    app:helperText="@{dialogAddVm.firstNameError}"
+                    app:helperTextEnabled="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="text"
+                        android:hint="First Name"
+                        bind:textWatcher="@{dialogAddVm.firstNameTextWatcher}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_margin="5dp"
+                    app:helperText="@{dialogAddVm.lastNameError}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:hint="Last Name"
+                        android:inputType="text"
+                        bind:textWatcher="@{dialogAddVm.lastNameTextWatcher}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:onClick="@{()->dialogAddVm.btnAddClicked()}"
+                    android:text="SAVE"
+                    android:id="@+id/btn_add"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorAccent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>
